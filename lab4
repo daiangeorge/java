@@ -1,0 +1,71 @@
+import java.awt.Color;
+import java.util.*;
+
+public class Autovehicul {
+	private String marca;
+	private Color culoare;
+	private int vitezaCurenta;
+	private int treaptaViteza;
+	private int vitezaMaxima;
+	public Autovehicul(String marca, Color culoare, int vitezaCurenta, int treaptaViteza, int vitezaMaxima){
+		this.marca=marca;
+		this.culoare=culoare;
+		this.vitezaCurenta=vitezaCurenta;
+		this.treaptaViteza=treaptaViteza;
+		this.vitezaMaxima=vitezaMaxima;
+	}
+	public Autovehicul(){
+		this("DACIA",Color.BLACK,0,1,80);
+	}
+	public void setMarca(String marca){ this.marca=marca;}
+	public void setCuloare(Color culoare){ this.culoare=culoare;}
+	public void setVitezaCurenta(int v){
+		if(v<0){
+			vitezaCurenta=0;
+		}else if(v>vitezaMaxima){
+			vitezaCurenta=vitezaMaxima;
+		}else{
+			vitezaCurenta=v;
+		}
+	}
+	public String getMarca(){return marca;}
+	public Color getCuloare(){return culoare;}
+	public int getVitezaCurenta(){return vitezaCurenta;}
+	public int getTreaptaViteza(){return treaptaViteza;}
+	public int getVitezaMaxima(){return vitezaMaxima;}
+	
+	public void accelereaza(int x){ setVitezaCurenta(vitezaCurenta+x);}
+	public void decelerare(int x) { setVitezaCurenta(vitezaCurenta-x);}
+	public void opreste() { vitezaCurenta=0; }
+	public void setTreaptaViteza(int t){
+		if (t<0){
+			treaptaViteza=0;
+		}else{
+			treaptaViteza=t;
+		}
+	}
+	public class Sofer{
+		private String nume;
+		private String prenume;
+		private int varsta;
+		private String nrPermisConducere;
+		public Sofer(String nume, String prenume, int varsta, String nrPermisConducere){
+			this.nume=nume;
+			this.prenume=prenume;
+			this.varsta=varsta;
+			this.nrPermisConducere=nrPermisConducere;
+		}
+	}
+  public Sofer(){
+      this("Doi","John",30,"Aabcdertyu");
+    }
+  public class Autovehicul{
+    private Sofer sofer;
+    public Autovehicul(...,Sofer sofer){
+      this sofer=sofer;
+    }
+    public Autovehicul(){
+    this(...,newSofer());
+    }
+}
++main
