@@ -1,0 +1,48 @@
+import java.util.*;
+import java.math.BigInteger;
+
+
+public class Loto6din49 {
+      public static void main(String[] args)
+      {
+    	  Scanner scan = new Scanner(System.in);
+          int[] numere = new int[6];
+          int numarExtras;
+          int[] numereleTale = new int[6];
+          long x = 1;
+          long h = 0000L;
+          short info_impachetata;
+          
+          for(int i=0; i<6; i++)
+          {
+        	numereleTale[i]= scan.nextInt()	;  
+          }
+          for(int i=0; i<6; i++)
+          {
+              numarExtras = (int)(Math.random()*49);
+              for(int j=0; j<i; j++)
+              {
+                  if(numere[j] == numarExtras || numarExtras == 0)
+                  {
+                      numarExtras=(int)(Math.random()*49);
+                  }
+              }
+              numere[i] = numarExtras;
+            //impachetare
+              info_impachetata = (short)(h<<numarExtras);
+            //despachetare
+              numarExtras = info_impachetata & 0x31;
+              
+          }
+      for(int i = 0; i < 6; i++)
+          System.out.print(numere[i]+ " ");
+      System.out.println("\nNumerele tale sunt: ");
+      for(int i = 0; i < 6; i++)
+    	  System.out.print(numereleTale[i]+ " ");
+      BigInteger loterie = BigInteger.valueOf(1);
+      for(int i=1; i<=6; i++)
+    	  loterie = loterie.multiply(BigInteger.valueOf(49-i+1)).divide(BigInteger.valueOf(i));
+      System.out.println("Sansele tale sunt 1 in " + loterie);
+      
+      }	  	  
+}
